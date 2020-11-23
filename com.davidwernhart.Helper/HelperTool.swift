@@ -25,7 +25,7 @@ class HelperTool: NSObject, HelperToolProtocol {
             exit(EX_UNAVAILABLE)
         }
         
-        var key = SMCKit.getKey(key, type: DataTypes.UInt8)
+        let key = SMCKit.getKey(key, type: DataTypes.UInt8)
         let bytes: SMCBytes = (value, UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
         UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
         UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
@@ -34,7 +34,7 @@ class HelperTool: NSObject, HelperToolProtocol {
         UInt8(0), UInt8(0))
         
         do {
-            let status = try SMCKit.writeData(key,data: bytes)
+            _ = try SMCKit.writeData(key,data: bytes)
         } catch {
         }
     }
@@ -46,7 +46,7 @@ class HelperTool: NSObject, HelperToolProtocol {
             exit(EX_UNAVAILABLE)
         }
         
-        var key = SMCKit.getKey(key, type: DataTypes.UInt8)
+        let key = SMCKit.getKey(key, type: DataTypes.UInt8)
         do {
             let status = try SMCKit.readData(key).0
             reply(status)
